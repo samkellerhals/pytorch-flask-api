@@ -1,2 +1,3 @@
 env/
 pytorch_flask_api.egg-info
+api/__pycache__
