@@ -10,4 +10,13 @@ class HelloWorld(Resource):
         body = request.get_json()
         return {'you sent': body}, 201
 
+class PredictImage(Resource):
+    def post(self):
+        body = request.get_json()
+        return {
+            'class_id':'xxx',
+            'class_name': 'xxx'
+            }
+
 api.add_resource(HelloWorld, '/')
+api.add_resource(PredictImage, '/predict')
