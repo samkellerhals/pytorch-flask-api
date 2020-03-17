@@ -5,13 +5,13 @@ from torchvision import models
 import json
 import requests
 
-url = 'https://natgeo.imgix.net/factsheets/thumbnails/01-hermit-crabs-minden_00512417.ngsversion.1547661601286.adapt.1900.1.jpg?auto=compress,format&w=1600&h=900&fit=crop'
-response = requests.get(url)
-model = models.densenet121(pretrained=True)
-model.eval()
-imagenet_class_index = json.load(open('imagenet_class_index.json'))
+# get model into evaluation mode
+model = models.densenet121(pretrained=True).eval()
 
-def transform_image(response):
+# imagenet classes
+imagenet_class_index = json.load(open('torch_api/imagenet_class_index.json'))
+
+def transform_image(image_bytes):
     img_transforms = transforms.Compose([transforms.Resize(255),
                                      transforms.CenterCrop(224),
                                      transforms.ToTensor(),
@@ -19,7 +19,7 @@ def transform_image(response):
                                          [0.485, 0.456, 0.406],
                                          [0.229, 0.224, 0.225])])
                                          
-    image = Image.open(BytesIO(response.content))
+    image = Image.open(BytesIO(image_bytes))
     return img_transforms(image).unsqueeze(0)
 
 def get_prediction(image_bytes):
@@ -28,7 +28,3 @@ def get_prediction(image_bytes):
     _, y_hat = outputs.max(1)
     predicted_idx = str(y_hat.item())
     return imagenet_class_index[predicted_idx]
-
-
-print(get_prediction(response))
-
