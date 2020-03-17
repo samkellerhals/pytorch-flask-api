@@ -1,8 +1,12 @@
 from torch_api import api
-from flask import request
-from flask_restful import Resource, reqparse
+from flask import request, make_response
+from flask_restful import Resource 
 from torch_api.model import get_prediction
 import werkzeug
+
+class Home(Resource):
+    def get(self):
+        return make_response('<h1>Pytorch-Flask-Api Server</h1><br><span><b>Status:</b> Running</span>', 200)
 
 class PredictImage(Resource):
     def post(self):
@@ -19,4 +23,5 @@ class PredictImage(Resource):
 
         return predictions, 200
 
+api.add_resource(Home, '/')
 api.add_resource(PredictImage, '/predict')
