@@ -6,6 +6,10 @@ setup(
     include_package_data=True,
     install_requires=[
         'flask',
-        'flask_restful'
+        'flask_restful',
+        'torchvision',
+        'torch',
+        'werkzeug',
+        'requests'
     ],
 )
