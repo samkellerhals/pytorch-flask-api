@@ -2,3 +2,4 @@ env/
 pytorch_flask_api.egg-info
 torch_api/__pycache__
 .vscode
+hosts.ini
