@@ -7,9 +7,11 @@ setup(
     install_requires=[
         'flask',
         'flask_restful',
+        'flask_cors',
         'torchvision',
         'torch',
         'werkzeug',
-        'requests'
+        'requests',
+        'wget'
     ],
 )

@@ -40,7 +40,7 @@
         msg: "{{ docker_version.stdout_lines }}"
     
     - name: Pull container
-      command: docker pull sakell/flask-api-torch:first-release
+      command: docker pull sakell/flask-api-torch:latest
 
     - name: Run container with port mapping
-      command: docker run -d -p 5000:5000 sakell/flask-api-torch:first-release
+      command: docker run -d -p 5000:5000 sakell/flask-api-torch:latest
