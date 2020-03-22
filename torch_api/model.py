@@ -7,6 +7,7 @@ import requests
 
 # get model into evaluation mode
 model = models.densenet121(pretrained=True).eval()
+print('model was sucessfully loaded.')
 
 # imagenet classes
 imagenet_class_index = json.load(open('torch_api/imagenet_class_index.json'))
