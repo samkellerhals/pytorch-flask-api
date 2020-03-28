@@ -1,4 +1,5 @@
 # PyTorch REST API
+Flask REST API with a PyTorch backend that consumes image URLs in a POST request, and classifies the image using the pretrained DenseNet network from the PyTorch model library.
 
 ## Getting started
 
